@@ -24,8 +24,10 @@ const corsOptions = {
   }
 };
 
+const allowedOrigin = process.env.FRONTEND_URL;
+
 app.use(cors({
-  origin: 'https://your-frontend-project.vercel.app',
+  origin: allowedOrigin,
   credentials: true
 }));
 
