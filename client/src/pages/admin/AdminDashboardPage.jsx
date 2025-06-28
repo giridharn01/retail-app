@@ -23,7 +23,7 @@ const AdminDashboardPage = () => {
       setLoading(true);
       const [productsRes, ordersRes, serviceRequestsRes, usersRes] = await Promise.all([
         apiRequest('/products'),
-        apiRequest('/orders'),
+        // apiRequest('/orders'),
         apiRequest('/service-requests'),
         apiRequest('/users')
       ]);
@@ -55,13 +55,13 @@ const AdminDashboardPage = () => {
       color: 'bg-blue-500',
       link: '/admin/products'
     },
-    {
-      title: 'Total Orders',
-      value: stats.orders,
-      icon: '🛒',
-      color: 'bg-green-500',
-      link: '/admin/orders'
-    },
+    // {
+    //   title: 'Total Orders',
+    //   value: stats.orders,
+    //   icon: '🛒',
+    //   color: 'bg-green-500',
+    //   link: '/admin/orders'
+    // },
     {
       title: 'Service Requests',
       value: stats.serviceRequests,
