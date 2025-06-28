@@ -21,6 +21,7 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProductManagementPage from './pages/admin/AdminProductManagementPage';
 import AdminServiceRequestManagementPage from './pages/admin/AdminServiceRequestManagementPage';
 import AdminServiceTypesPage from './pages/admin/AdminServiceTypesPage';
+import AdminUsersPage from './pages/admin/AdminUsersPage';
 
 // Protected Route component
 const PrivateRoute = ({ children, requireAdmin = false }) => {
@@ -65,6 +66,7 @@ function App() {
               <Route path="/admin/products" element={<PrivateRoute requireAdmin><AdminProductManagementPage /></PrivateRoute>} />
               <Route path="/admin/service-requests" element={<PrivateRoute requireAdmin><AdminServiceRequestManagementPage /></PrivateRoute>} />
               <Route path="/admin/service-types" element={<PrivateRoute requireAdmin><AdminServiceTypesPage /></PrivateRoute>} />
+              <Route path="/admin/users" element={<PrivateRoute requireAdmin><AdminUsersPage /></PrivateRoute>} />
             </Routes>
           </main>
         </div>
