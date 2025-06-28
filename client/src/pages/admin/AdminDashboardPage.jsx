@@ -5,7 +5,7 @@ import { apiRequest } from '../../utils/api';
 const AdminDashboardPage = () => {
   const [stats, setStats] = useState({
     products: 0,
-    orders: 0,
+    // orders: 0,
     serviceRequests: 0,
     users: 0,
     pendingRequests: 0,
@@ -21,7 +21,7 @@ const AdminDashboardPage = () => {
   const fetchDashboardStats = async () => {
     try {
       setLoading(true);
-      const [productsRes, ordersRes, serviceRequestsRes, usersRes] = await Promise.all([
+      const [productsRes, serviceRequestsRes, usersRes] = await Promise.all([
         apiRequest('/products'),
         // apiRequest('/orders'),
         apiRequest('/service-requests'),
@@ -33,7 +33,7 @@ const AdminDashboardPage = () => {
 
       setStats({
         products: productsRes.data.length,
-        orders: ordersRes.data.length,
+        // orders: ordersRes.data.length,
         serviceRequests: serviceRequestsRes.data.length,
         users: usersRes.data.length,
         pendingRequests,
