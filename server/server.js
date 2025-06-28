@@ -36,6 +36,7 @@ app.use(express.json());
 
 // Routes (without /api prefix)
 app.use('/auth', require('./src/routes/auth'));
+app.use('/users', require('./src/routes/users'));
 app.use('/products', require('./src/routes/products'));
 app.use('/orders', require('./src/routes/orders'));
 app.use('/service-requests', require('./src/routes/services'));
