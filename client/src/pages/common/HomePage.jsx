@@ -86,7 +86,7 @@ const HomePage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              <span className="block">TechFarm Solutions</span>
+              <span className="block">Palani andavar</span>
               <span className="block text-yellow-400 mt-2">Electrical • Hardware • Agri-Tech</span>
             </h1>
             <p className="mt-6 text-xl text-blue-100 max-w-3xl mx-auto">
