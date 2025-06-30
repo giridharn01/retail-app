@@ -1,27 +1,23 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 // Layouts
 import Navbar from './components/Navbar';
 
-// Common Pages
-import HomePage from './pages/common/HomePage';
-import LoginPage from './pages/common/LoginPage';
-import RegisterPage from './pages/common/RegisterPage';
-import ProductListPage from './pages/common/ProductListPage';
-import ProductDetailPage from './pages/common/ProductDetailPage';
-
-// User Pages
-import ServiceRequestPage from './pages/user/ServiceRequestPage';
-import UserProfilePage from './pages/user/UserProfilePage';
-
-// Admin Pages
-import AdminDashboardPage from './pages/admin/AdminDashboardPage';
-import AdminProductManagementPage from './pages/admin/AdminProductManagementPage';
-import AdminServiceRequestManagementPage from './pages/admin/AdminServiceRequestManagementPage';
-import AdminServiceTypesPage from './pages/admin/AdminServiceTypesPage';
-import AdminUsersPage from './pages/admin/AdminUsersPage';
+// Lazy load major pages
+const HomePage = lazy(() => import('./pages/common/HomePage'));
+const LoginPage = lazy(() => import('./pages/common/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/common/RegisterPage'));
+const ProductListPage = lazy(() => import('./pages/common/ProductListPage'));
+const ProductDetailPage = lazy(() => import('./pages/common/ProductDetailPage'));
+const ServiceRequestPage = lazy(() => import('./pages/user/ServiceRequestPage'));
+const UserProfilePage = lazy(() => import('./pages/user/UserProfilePage'));
+const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'));
+const AdminProductManagementPage = lazy(() => import('./pages/admin/AdminProductManagementPage'));
+const AdminServiceRequestManagementPage = lazy(() => import('./pages/admin/AdminServiceRequestManagementPage'));
+const AdminServiceTypesPage = lazy(() => import('./pages/admin/AdminServiceTypesPage'));
+const AdminUsersPage = lazy(() => import('./pages/admin/AdminUsersPage'));
 
 // Protected Route component
 const PrivateRoute = ({ children, requireAdmin = false }) => {
@@ -49,25 +45,27 @@ function App() {
         <div className="min-h-screen bg-gray-100 relative">
           <Navbar />
           <main className="container mx-auto px-4 py-8 relative z-10">
-            <Routes>
-              {/* Common Routes */}
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/products" element={<ProductListPage />} />
-              <Route path="/products/:id" element={<ProductDetailPage />} />
+            <Suspense fallback={<div className="flex justify-center items-center min-h-[40vh]"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div></div>}>
+              <Routes>
+                {/* Common Routes */}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/products" element={<ProductListPage />} />
+                <Route path="/products/:id" element={<ProductDetailPage />} />
 
-              {/* User Routes */}
-              <Route path="/service-request" element={<PrivateRoute><ServiceRequestPage /></PrivateRoute>} />
-              <Route path="/profile" element={<PrivateRoute><UserProfilePage /></PrivateRoute>} />
+                {/* User Routes */}
+                <Route path="/service-request" element={<PrivateRoute><ServiceRequestPage /></PrivateRoute>} />
+                <Route path="/profile" element={<PrivateRoute><UserProfilePage /></PrivateRoute>} />
 
-              {/* Admin Routes */}
-              <Route path="/admin" element={<PrivateRoute requireAdmin><AdminDashboardPage /></PrivateRoute>} />
-              <Route path="/admin/products" element={<PrivateRoute requireAdmin><AdminProductManagementPage /></PrivateRoute>} />
-              <Route path="/admin/service-requests" element={<PrivateRoute requireAdmin><AdminServiceRequestManagementPage /></PrivateRoute>} />
-              <Route path="/admin/service-types" element={<PrivateRoute requireAdmin><AdminServiceTypesPage /></PrivateRoute>} />
-              <Route path="/admin/users" element={<PrivateRoute requireAdmin><AdminUsersPage /></PrivateRoute>} />
-            </Routes>
+                {/* Admin Routes */}
+                <Route path="/admin" element={<PrivateRoute requireAdmin><AdminDashboardPage /></PrivateRoute>} />
+                <Route path="/admin/products" element={<PrivateRoute requireAdmin><AdminProductManagementPage /></PrivateRoute>} />
+                <Route path="/admin/service-requests" element={<PrivateRoute requireAdmin><AdminServiceRequestManagementPage /></PrivateRoute>} />
+                <Route path="/admin/service-types" element={<PrivateRoute requireAdmin><AdminServiceTypesPage /></PrivateRoute>} />
+                <Route path="/admin/users" element={<PrivateRoute requireAdmin><AdminUsersPage /></PrivateRoute>} />
+              </Routes>
+            </Suspense>
           </main>
         </div>
       </Router>

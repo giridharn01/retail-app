@@ -216,12 +216,12 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {new Date(request.preferredDate).toLocaleDateString()}
                       </td>
-                      <td className="px-3 py-4 text-sm sm:whitespace-nowrap align-middle">
+                      <td className="px-3 py-4 text-sm align-middle min-w-[120px] w-full">
                         <select
                           value={request.status}
                           onChange={(e) => handleStatusUpdate(request._id, e.target.value)}
-                          className={`block w-full pl-3 pr-8 py-2 text-xs sm:text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md truncate whitespace-nowrap ${getStatusColor(request.status)}`}
-                          style={{ minWidth: 0, maxWidth: '100%' }}
+                          className={`block w-full pl-3 pr-8 py-2 text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md truncate whitespace-nowrap ${getStatusColor(request.status)}`}
+                          style={{ minWidth: 120 }}
                         >
                           <option value="pending">Pending</option>
                           <option value="in-progress">In Progress</option>

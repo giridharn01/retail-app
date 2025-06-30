@@ -12,13 +12,30 @@ exports.getServiceRequests = async (req, res) => {
             query.user = req.user.id;
         }
 
+        // Pagination
+        const pageNumber = parseInt(req.query.page, 10) || 1;
+        const limitNumber = parseInt(req.query.limit, 10) || 10;
+        const skip = (pageNumber - 1) * limitNumber;
+
         const serviceRequests = await ServiceRequest.find(query)
             .populate('user', 'name email')
-            .populate('technician', 'name email');
+            .populate('technician', 'name email')
+            .limit(limitNumber)
+            .skip(skip);
+
+        // Get total count for pagination
+        const total = await ServiceRequest.countDocuments(query);
 
         res.json({
             success: true,
             count: serviceRequests.length,
+            total,
+            pagination: {
+                current: pageNumber,
+                pages: Math.ceil(total / limitNumber),
+                hasNext: pageNumber * limitNumber < total,
+                hasPrev: pageNumber > 1
+            },
             data: serviceRequests
         });
     } catch (error) {
