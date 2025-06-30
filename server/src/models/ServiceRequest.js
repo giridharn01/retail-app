@@ -8,8 +8,7 @@ const serviceRequestSchema = new mongoose.Schema({
     },
     serviceType: {
         type: String,
-        required: [true, 'Please specify service type'],
-        enum: ['repair', 'maintenance', 'installation', 'consultation']
+        required: [true, 'Please specify service type']
     },
     description: {
         type: String,

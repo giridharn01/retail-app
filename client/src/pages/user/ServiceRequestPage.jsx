@@ -7,10 +7,8 @@ const ServiceRequestPage = React.memo(() => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [serviceTypes, setServiceTypes] = useState([]);
-  const [equipmentTypes, setEquipmentTypes] = useState([]);
+
   const [formData, setFormData] = useState({
-    equipmentType: '',
-    equipmentModel: '',
     serviceType: '',
     preferredDate: '',
     preferredTime: '',
@@ -20,12 +18,8 @@ const ServiceRequestPage = React.memo(() => {
 
   const fetchServiceData = useCallback(async () => {
     try {
-      const [serviceRes, equipmentRes] = await Promise.all([
-        apiRequest('/service-types'),
-        apiRequest('/equipment-types')
-      ]);
+      const serviceRes = await apiRequest('/service-types');
       setServiceTypes(serviceRes.data || []);
-      setEquipmentTypes(equipmentRes.data || []);
     } catch (err) {
       setError('Failed to load service data');
     }
@@ -80,45 +74,6 @@ const ServiceRequestPage = React.memo(() => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="bg-white shadow rounded-lg p-6">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {/* Equipment Type */}
-              <div>
-                <label htmlFor="equipmentType" className="block text-sm font-medium text-gray-700">
-                  Equipment Type *
-                </label>
-                <select
-                  id="equipmentType"
-                  name="equipmentType"
-                  value={formData.equipmentType}
-                  onChange={handleChange}
-                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                  required
-                >
-                  <option value="">Select Equipment Type</option>
-                  {equipmentTypes.map((equipment) => (
-                    <option key={equipment._id} value={equipment.name}>
-                      {equipment.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Equipment Model */}
-              <div>
-                <label htmlFor="equipmentModel" className="block text-sm font-medium text-gray-700">
-                  Equipment Model *
-                </label>
-                <input
-                  type="text"
-                  id="equipmentModel"
-                  name="equipmentModel"
-                  value={formData.equipmentModel}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="e.g., Model XYZ-123"
-                  required
-                />
-              </div>
-
               {/* Service Type */}
               <div>
                 <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700">
