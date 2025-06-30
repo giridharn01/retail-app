@@ -5,7 +5,8 @@ const {
     getServiceRequest,
     createServiceRequest,
     updateServiceRequest,
-    cancelServiceRequest
+    cancelServiceRequest,
+    deleteServiceRequest
 } = require('../controllers/services');
 const { protect, authorize } = require('../middleware/auth');
 const ServiceRequest = require('../models/ServiceRequest');
@@ -39,5 +40,7 @@ router.route('/:id')
     .put(protect, authorize('admin'), updateServiceRequest);
 
 router.put('/:id/cancel', protect, cancelServiceRequest);
+
+router.delete('/:id', protect, authorize('admin'), deleteServiceRequest);
 
 module.exports = router; 

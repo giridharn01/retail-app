@@ -174,4 +174,16 @@ exports.cancelServiceRequest = async (req, res) => {
             error: error.message
         });
     }
+};
+
+exports.deleteServiceRequest = async (req, res) => {
+  try {
+    const serviceRequest = await ServiceRequest.findByIdAndDelete(req.params.id);
+    if (!serviceRequest) {
+      return res.status(404).json({ success: false, error: 'Service request not found' });
+    }
+    res.json({ success: true, message: 'Service request deleted' });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 }; 

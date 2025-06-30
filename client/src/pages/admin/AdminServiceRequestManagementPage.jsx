@@ -212,9 +212,6 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                           Request ID
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                          Equipment
-                        </th>
-                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                           Service Type
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -235,14 +232,6 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                             #{request._id.slice(-6)}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            <div className="flex items-center">
-                              <div className="ml-4">
-                                <div className="font-medium text-gray-900">{request.equipmentType}</div>
-                                <div className="text-gray-500">{request.equipmentModel}</div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {request.serviceType}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -252,7 +241,7 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                             <select
                               value={request.status}
                               onChange={(e) => handleStatusUpdate(request._id, e.target.value)}
-                              className={`block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md ${getStatusColor(request.status)}`}
+                              className={`block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md max-w-[120px] sm:max-w-[160px] truncate whitespace-nowrap ${getStatusColor(request.status)}`}
                             >
                               <option value="pending">Pending</option>
                               <option value="in-progress">In Progress</option>
@@ -304,12 +293,6 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                   </h3>
                   <div className="mt-4 space-y-4">
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500">Equipment Information</h4>
-                      <p className="mt-1 text-sm text-gray-900">
-                        {selectedRequest.equipmentType} - {selectedRequest.equipmentModel}
-                      </p>
-                    </div>
-                    <div>
                       <h4 className="text-sm font-medium text-gray-500">Service Type</h4>
                       <p className="mt-1 text-sm text-gray-900">{selectedRequest.serviceType}</p>
                     </div>
@@ -335,7 +318,7 @@ const AdminServiceRequestManagementPage = React.memo(() => {
                           handleStatusUpdate(selectedRequest._id, e.target.value);
                           setSelectedRequest({ ...selectedRequest, status: e.target.value });
                         }}
-                        className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md ${getStatusColor(selectedRequest.status)}`}
+                        className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md max-w-[120px] sm:max-w-[160px] truncate whitespace-nowrap ${getStatusColor(selectedRequest.status)}`}
                       >
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
