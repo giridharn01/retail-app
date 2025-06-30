@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-800">TechFarm Solutions</span>
+              <span className="text-xl font-bold text-gray-800">Palani andavar</span>
             </Link>
             <div className="hidden md:ml-6 md:flex md:space-x-8">
               <Link to="/products" className="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-700">
