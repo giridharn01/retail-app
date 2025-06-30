@@ -111,43 +111,45 @@ const HomePage = () => {
       </div>
 
       {/* Services Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Our Services
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions for all your electrical, hardware, and agricultural needs
-            </p>
-          </div>
-
-          {error && (
-            <div className="mt-6 rounded-md bg-yellow-50 p-4">
-              <div className="text-sm text-yellow-700">{error}</div>
+      {!isAdmin && (
+        <div className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                Our Services
+              </h2>
+              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Comprehensive solutions for all your electrical, hardware, and agricultural needs
+              </p>
             </div>
-          )}
 
-          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
-              <div
-                key={service._id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100"
-              >
-                <div className="p-8">
-                  <div className="text-5xl mb-6">{getServiceIcon(service.name)}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {service.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description || 'Professional service for all your needs'}
-                  </p>
-                </div>
+            {error && (
+              <div className="mt-6 rounded-md bg-yellow-50 p-4">
+                <div className="text-sm text-yellow-700">{error}</div>
               </div>
-            ))}
+            )}
+
+            <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {services.map((service) => (
+                <div
+                  key={service._id}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100"
+                >
+                  <div className="p-8">
+                    <div className="text-5xl mb-6">{getServiceIcon(service.name)}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      {service.name}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description || 'Professional service for all your needs'}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Featured Products Section */}
       <div className="py-20 bg-gray-50">
