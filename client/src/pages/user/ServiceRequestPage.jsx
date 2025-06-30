@@ -72,8 +72,8 @@ const ServiceRequestPage = React.memo(() => {
   }, [formData, fetchUserRequests]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-2 sm:px-4 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Request a Service</h2>
         <p className="text-gray-600 text-center mb-8">Fill out the form to request a new service. You can also view your previous requests below.</p>
 

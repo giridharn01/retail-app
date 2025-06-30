@@ -83,7 +83,7 @@ const HomePage = () => {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 mix-blend-multiply" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="relative max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-32">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
               <span className="block">Palani andavar</span>
@@ -112,7 +112,7 @@ const HomePage = () => {
 
       {/* Services Section */}
       <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
               Our Services
@@ -151,7 +151,7 @@ const HomePage = () => {
 
       {/* Featured Products Section */}
       <div className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
               Featured Products
@@ -208,7 +208,7 @@ const HomePage = () => {
       {/* CTA Section */}
       {!isAdmin && (
         <div className="bg-blue-600">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-20">
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
                 Need Professional Help?

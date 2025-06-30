@@ -97,7 +97,7 @@ const UserProfilePage = React.memo(() => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
       <h1 className="text-3xl font-bold mb-8">My Profile</h1>
       
       <div className="mb-6">

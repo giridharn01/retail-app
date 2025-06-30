@@ -57,8 +57,8 @@ const ProductDetailPage = React.memo(() => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
           {/* Product Image */}
           <div className="lg:max-w-lg lg:self-end">
