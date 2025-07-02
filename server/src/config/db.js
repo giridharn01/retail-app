@@ -1,9 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config();
-const dbUri = process.env.MONGODB_URI;
-
+require('dotenv').config();
 const mongoose = require('mongoose');
-const helmet = require('helmet');
+
+const dbUri = process.env.MONGODB_URI;
 
 const connectDB = async () => {
     try {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
+// console.log('API_URL:', API_URL); // Debug log
 
 const api = axios.create({
   baseURL: API_URL,
@@ -18,6 +19,8 @@ export const apiRequest = async (endpoint, method = 'GET', data = null) => {
     headers,
     ...(data && { data })
   };
+
+  // console.log('Making API request to:', API_URL + endpoint); // Debug log
 
   try {
     const response = await api.request({

@@ -21,15 +21,11 @@ const corsOptions = {
       return callback(new Error('Not allowed by CORS'), false);
     }
     return callback(null, true);
-  }
+  },
+  credentials: true
 };
 
-const allowedOrigin = process.env.FRONTEND_URL;
-
-app.use(cors({
-  origin: allowedOrigin,
-  credentials: true
-}));
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.json());
@@ -54,7 +50,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
